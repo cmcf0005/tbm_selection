@@ -335,6 +335,9 @@ def serve_file(filename):
 INPUT_HTML = '''
 <!doctype html>
 <title>Integrated TBM Selection Framework</title>
+<script>
+window.MathJax = {tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'}};
+</script>
 <style>
 body { font-family: Arial, sans-serif; max-width: 1200px; margin: 30px auto; line-height: 1.4; color:#111; padding:0 18px; }
 h1 { margin-bottom:8px; }
