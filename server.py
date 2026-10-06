@@ -457,12 +457,12 @@ button { padding:10px 18px; font-size:16px; cursor:pointer; }
     </div>
     <div id="clay-inputs">
       <h3 class="subhead">Soft Soil / Clay Face-Support Inputs</h3>
-      <div class="note">Mechanical cutting / boring resistance is neglected for the soft-clay thrust branch. Face support uses \(F_{support}=F_s+F_w\), with \(K_a=1\) for undrained cohesive clay. Cutterhead torque is entered separately because no single universal clay torque equation is assumed.</div>
+      <div class="note">Mechanical cutting and boring resistance is neglected for the soft-clay thrust calculation. Face-support force is calculated from soil and water pressure for undrained cohesive clay. Cutterhead torque is entered separately because no single universal clay torque equation is assumed.</div>
       <div class="grid">{% for key, label, unit, column, group in mech_fields if group == 'clay' %}<div class="field"><label for="{{ key }}">{{ label }}</label><div class="input-wrap"><input type="number" step="any" id="{{ key }}" name="{{ key }}" value="{{ values.mech[key] }}">{% if unit %}<span class="unit">{{ unit }}</span>{% endif %}</div><div class="field-help">{{ mech_help.get(key, "") }}</div></div>{% endfor %}</div>
     </div>
     <div id="rock-inputs">
       <h3 class="subhead">Hard Rock CSM boring-force inputs</h3>
-      <div class="note">Uses the CSM disc-cutter model and \(F_{boring}=nF_0\).</div>
+      <div class="note">Uses the CSM disc-cutter model to estimate the total boring force from the force acting on each cutter.</div>
       <div class="grid">{% for key, label, unit, column, group in mech_fields if group == 'rock' %}<div class="field"><label for="{{ key }}">{{ label }}</label><div class="input-wrap"><input type="number" step="any" id="{{ key }}" name="{{ key }}" value="{{ values.mech[key] }}">{% if unit %}<span class="unit">{{ unit }}</span>{% endif %}</div><div class="field-help">{{ mech_help.get(key, "") }}</div></div>{% endfor %}</div>
     </div>
   </fieldset>
