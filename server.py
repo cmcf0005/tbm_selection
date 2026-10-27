@@ -332,6 +332,16 @@ def serve_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 
+@app.route('/download-example')
+def download_example():
+    from flask import send_from_directory
+
+    return send_from_directory(
+        app.root_path,
+        'EPB Example.xlsx',
+        as_attachment=True
+    )
+
 INPUT_HTML = '''
 <!doctype html>
 <title>Integrated TBM Selection Framework</title>
@@ -373,8 +383,15 @@ button { padding:10px 18px; font-size:16px; cursor:pointer; }
   <fieldset>
     <legend><b>Load Spreadsheet</b></legend>
     <p>Select an existing TBM input spreadsheet. Loading it fills the fields below; you can then edit them before running the selection.</p>
+    
     <input type="file" name="file" accept=".xls,.xlsx">
     <button type="submit" name="action" value="load">Load Spreadsheet Values</button>
+    
+    <a href="{{ url_for('download_example') }}" download
+       style="margin-left: 15px; font-size: 14px;">
+        Download Example Spreadsheet
+    </a>
+
   </fieldset>
 
   <fieldset>
